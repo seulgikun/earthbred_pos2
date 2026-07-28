@@ -1,0 +1,165 @@
+/* manager-ai.css */
+
+.ai-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #f3ece1; /* Cream background */
+    height: 100vh;
+    overflow: hidden;
+}
+
+.ai-header {
+    padding: 20px 30px;
+    border-bottom: 2px solid #e1d3c1;
+}
+
+.ai-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #4a2c11;
+    margin: 0;
+}
+
+.ai-content-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ai-title-banner {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 2px solid #e1d3c1;
+    gap: 15px;
+}
+
+.ai-icon {
+    font-size: 2rem;
+}
+
+.ai-title-text h3 {
+    margin: 0 0 5px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #2c1a14;
+    font-weight: 800;
+}
+
+.ai-title-text p {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    color: #5c4a40;
+    font-weight: 500;
+}
+
+.ai-chat-window {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chat-message {
+    display: flex;
+    gap: 15px;
+    max-width: 80%;
+}
+
+.bot-message {
+    align-self: flex-start;
+}
+
+.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    font-size: 1.8rem;
+    width: 40px;
+    text-align: center;
+}
+
+.message-bubble {
+    padding: 20px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: #2c1a14;
+    line-height: 1.5;
+}
+
+.bot-bubble {
+    background-color: #fbebd8;
+    border: 1px solid #ebd2b8;
+    border-radius: 4px 16px 16px 16px;
+}
+
+.user-bubble {
+    background-color: #5c4a40;
+    color: #fff;
+    border-radius: 16px 4px 16px 16px;
+}
+
+.bot-bubble ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.bot-bubble p {
+    margin: 0 0 10px 0;
+}
+
+.bot-bubble p:last-child {
+    margin: 0;
+}
+
+.ai-input-area {
+    padding: 20px 30px;
+    border-top: 2px solid #e1d3c1;
+    background-color: #f3ece1;
+}
+
+.chat-form {
+    display: flex;
+    gap: 15px;
+}
+
+.chat-form input {
+    flex: 1;
+    padding: 15px 20px;
+    border: 1px solid #8d786c;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.chat-form input:focus {
+    border-color: #482f25;
+}
+
+.send-btn {
+    background-color: #5c4a40;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.send-btn:hover {
+    background-color: #3b2c24;
+}
