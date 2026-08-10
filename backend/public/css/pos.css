@@ -921,3 +921,35 @@ body {
 
 
 
+
+/* Sidebar Toggle Styles */
+.sidebar::-webkit-scrollbar, .menu-section::-webkit-scrollbar { display: none; }
+.sidebar, .menu-section { -ms-overflow-style: none; scrollbar-width: none; }
+
+.sidebar-toggle-btn {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f1ebd9;
+    color: #000;
+    border: 2px solid #e5d9c5;
+    border-left: none;
+    padding: 15px 12px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: left 0.3s ease, background-color 0.2s;
+}
+.sidebar-toggle-btn:hover { background-color: #e8dcc4; }
+.sidebar {
+    position: fixed !important;
+    left: -260px !important;
+    transition: left 0.3s ease !important;
+    z-index: 1000 !important;
+    height: 100vh;
+}
+.sidebar.show { left: 0 !important; }
+.main-content { width: 100% !important; margin-left: 0 !important; }
+

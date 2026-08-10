@@ -240,5 +240,7 @@
         });
     </script>
     <script src="<?= asset('js/manager-products.js') ?>?v=<?= time() ?>"></script>
+<script src="<?= asset('js/sidebar-toggle.js') ?>?v=<?= time() ?>"></script>
 </body>
 </html>
+

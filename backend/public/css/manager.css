@@ -675,3 +675,33 @@ body {
 .resolve-btn:hover {
     background-color: #25632a;
 }
+
+/* Sidebar Toggle Styles */
+.mgr-sidebar::-webkit-scrollbar, .mgr-nav::-webkit-scrollbar { display: none; }
+.mgr-sidebar, .mgr-nav { -ms-overflow-style: none; scrollbar-width: none; }
+
+.sidebar-toggle-btn {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--brand-primary, #482f25);
+    color: white;
+    border: none;
+    padding: 15px 12px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    transition: left 0.3s ease;
+}
+.sidebar-toggle-btn:hover { background-color: var(--brand-dark, #2c1a14); }
+.mgr-sidebar {
+    position: fixed !important;
+    left: -260px !important;
+    transition: left 0.3s ease !important;
+    z-index: 1000 !important;
+}
+.mgr-sidebar.show { left: 0 !important; }
+.mgr-main { width: 100% !important; margin-left: 0 !important; }
+

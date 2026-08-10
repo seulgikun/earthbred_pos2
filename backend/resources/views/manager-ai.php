@@ -127,6 +127,8 @@
     </div>
 
     <script src="<?= asset('js/manager-ai.js') ?>?v=<?= time() ?>"></script>
+<script src="<?= asset('js/sidebar-toggle.js') ?>?v=<?= time() ?>"></script>
 </body>
 
 </html>
+

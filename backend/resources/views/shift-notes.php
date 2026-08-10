@@ -6,7 +6,7 @@
     <title>Earthbred - Shift Notes</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="<?= asset('css/pos.css') ?>">
+    <link rel="stylesheet" href="<?= asset('css/pos.css') ?>?v=<?= time() ?>">
     <link rel="stylesheet" href="<?= asset('css/shift-notes.css') ?>">
     <style>
         .pos-category-tag.tag-general { background-color: #e3f2fd !important; color: #1565c0 !important; border: 1px solid #bbdefb; }
@@ -189,5 +189,8 @@
         </div>
         </main>
     </div>
+<script src="<?= asset('js/sidebar-toggle.js') ?>?v=<?= time() ?>"></script>
 </body>
 </html>
+
+

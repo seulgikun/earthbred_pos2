@@ -240,6 +240,8 @@
             });
         });
     </script>
+<script src="<?= asset('js/sidebar-toggle.js') ?>?v=<?= time() ?>"></script>
 </body>
 
 </html>
+
