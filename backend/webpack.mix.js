@@ -18,4 +18,7 @@ mix.js('resources/js/app.js', 'public/js')
         //
     ])
     .postCss('resources/css/style.css', 'public/css')
-    .postCss('resources/css/pos.css', 'public/css');
+    .postCss('resources/css/pos.css', 'public/css')
+    .options({
+        processCssUrls: false
+    });
