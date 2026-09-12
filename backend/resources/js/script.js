@@ -32,26 +32,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 loginBtn.textContent = 'Logging in...';
                 loginBtn.disabled = true;
 
-                // Example: Connect to Laravel Backend
-                // const API_URL = 'http://localhost:8000/api/login'; 
-                // const response = await fetch(API_URL, {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //         'Accept': 'application/json'
-                //     },
-                //     body: JSON.stringify({ email, password })
-                // });
-                // const data = await response.json();
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                    },
+                    body: JSON.stringify({ email, password })
+                });
 
-                // Simulate API call for now
-                setTimeout(() => {
-                    // Redirect to the Point of Sale dashboard
+                const data = await response.json();
+
+                if (!response.ok || !data.success) {
+                    alert(data.message || 'Login failed. Please check your credentials.');
+                    loginBtn.textContent = 'Log In';
+                    loginBtn.disabled = false;
+                    return;
+                }
+
+                // Store user session info
+                localStorage.setItem('userId', data.user.id);
+                localStorage.setItem('userName', data.user.name);
+                localStorage.setItem('userEmail', data.user.email);
+                localStorage.setItem('userRole', data.user.role);
+
+                // Role-based redirection
+                if (data.user.role === 'owner' || data.user.role === 'manager') {
+                    window.location.href = '/manager';
+                } else {
                     window.location.href = '/pos';
-                }, 800);
+                }
                 
             } catch (error) {
                 console.error('Error logging in:', error);
+                alert('A network error occurred. Please try again.');
                 loginBtn.textContent = 'Log In';
                 loginBtn.disabled = false;
             }
