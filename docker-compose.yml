@@ -1,0 +1,78 @@
+version: "3.9"
+
+services:
+  # -- Laravel App (Nginx + PHP-FPM) ------------------------------------------
+  app:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: earthbred_app
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    environment:
+      APP_NAME: "EarthBred POS"
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_URL: http://localhost:8000
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: earthbred_pos
+      DB_USERNAME: earthbred
+      DB_PASSWORD: secret
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - app_storage:/var/www/html/storage
+      - app_cache:/var/www/html/bootstrap/cache
+    networks:
+      - earthbred_net
+
+  # -- MySQL 8 ----------------------------------------------------------------
+  db:
+    image: mysql:8.0
+    container_name: earthbred_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootsecret
+      MYSQL_DATABASE: earthbred_pos
+      MYSQL_USER: earthbred
+      MYSQL_PASSWORD: secret
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootsecret"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - earthbred_net
+
+  # -- phpMyAdmin (optional, dev helper) -------------------------------------
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: earthbred_phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: rootsecret
+    depends_on:
+      - db
+    networks:
+      - earthbred_net
+
+volumes:
+  db_data:
+  app_storage:
+  app_cache:
+
+networks:
+  earthbred_net:
+    driver: bridge
